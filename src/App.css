@@ -1,6 +1,9 @@
+@font-face {
+  font-family: glitch;
+  src: url('./utils/Glitch inside.otf');
+}
 .App {
   text-align: center;
-
 }
 html{
   padding: 0;
@@ -73,6 +76,7 @@ body{
 }
 h2{
   font-size: 34px;
+  font-family: 'glitch';
   background: -webkit-linear-gradient(120deg , #2E4F4F, #CBE4DE, #2E4F4F);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

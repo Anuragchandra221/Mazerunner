@@ -18,8 +18,10 @@ function Home() {
   
   },[])
   return (
-    <div className='home h-100 d-flex justify-content-start align-items-center' style={{flexDirection:'column'}}>
-      <h2 className='text-center pt-3'>Mazerunner</h2>
+    <div className='h-100'>
+      <div className='text text-center'>
+        <h2 className='pt-3'>Mazerunner</h2>
+      </div>
       <div className='home  h-100 d-flex justify-content-center align-items-center' >
           <p className='text pb-0 m-0 mb-4'>Token no <span className='token'>{token}</span> is in the maze..</p>
           <div className='inputdiv'>
@@ -29,7 +31,7 @@ function Home() {
           </div>
         
       </div>
-    </div>
+      </div>
   )
 }
 
