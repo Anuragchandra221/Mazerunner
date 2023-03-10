@@ -18,10 +18,17 @@ function Home() {
   
   },[])
   return (
-    <div>
-      <p className='text pb-0 m-0'>Token no {token} is in the maze..</p>
-      <input placeholder='Enter your token number...' type="text" onChange={(e)=>{setInput(e.target.value)}} />
-      <Link to={`${input}/`}><button>Go</button></Link>
+    <div className='home h-100 d-flex justify-content-start align-items-center' style={{flexDirection:'column'}}>
+      <h2 className='text-center pt-3'>Mazerunner</h2>
+      <div className='home  h-100 d-flex justify-content-center align-items-center' >
+          <p className='text pb-0 m-0 mb-4'>Token no <span className='token'>{token}</span> is in the maze..</p>
+          <div className='inputdiv'>
+
+          <input className='input mb-3' placeholder='Enter your token number...' type="text" onChange={(e)=>{setInput(e.target.value)}} />
+          <Link to={`${input}/`} className="button" >Go</Link>
+          </div>
+        
+      </div>
     </div>
   )
 }

@@ -36,15 +36,11 @@ const submit = (e)=>{
 }
 
   return (
-    <div className='h-100' style={{position: 'relative'}}>
-      <h4 className='text-center pt-3'>Mazerunner</h4>
-      <div className='row h-100 d-flex align-items-center'>
-        <div className='col-md-3 d-flex justify-content-center'>
+    <div className='admin h-100 d-flex justify-content-start align-items-center' >
+      <h2 className='text-center pt-3'>Mazerunner</h2>
+      <div className='h-100 d-flex justify-content-center align-items-center' style={{flexDirection:'column'}}>
+          <p className='text pb-0 m-0 mb-3'>Token no <span className='token'>{token}</span> is in the maze..</p>
             <button className='button' onClick={submit}>ADd next</button>
-        </div>
-        <div className='pl-5 col-md-9 d-flex justify-content-start'>
-          <p className='text pb-0 m-0'>Token no {token} is in the maze..</p>
-        </div>
       </div>
       
       
