@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../firebase'
 import {  onValue, ref ,set } from 'firebase/database'
+import { Audio } from 'react-loader-spinner'
 
 
 function Admin() {
   const [token, setToken] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
 useEffect(()=>{
   const query = ref(db, "token")
   return onValue(query, (snapshot) => {
     const data = snapshot.val();
     setToken(data.token)
+    setIsLoading(false)
   });
   
 
@@ -34,18 +37,33 @@ const submit = (e)=>{
     token: data.token+1
   })
 }
-
-  return (
-    <div className='admin h-100 d-flex justify-content-start align-items-center' >
-      <h2 className='text-center pt-3'>Mazerunner</h2>
-      <div className='h-100 d-flex justify-content-center align-items-center' style={{flexDirection:'column'}}>
-          <p className='text pb-0 m-0 mb-3'>Token no <span className='token'>{token}</span> is in the maze..</p>
-            <button className='button' onClick={submit}>ADd next</button>
+  if(isLoading){
+    return (
+      <div style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
+          <Audio
+          height="80"
+          width="80"
+          radius="9"
+          color="#CBE4DE"
+          ariaLabel="loading"
+          wrapperStyle
+          wrapperClass
+        />
       </div>
-      
-      
-    </div>
-  )
+    )
+  }else{
+    return (
+      <div className='admin h-100 d-flex justify-content-start align-items-center' >
+        <h2 className='text-center pt-3'>Mazerunner</h2>
+        <div className='h-100 d-flex justify-content-center align-items-center' style={{flexDirection:'column'}}>
+            <p className='text pb-0 m-0 mb-3'>Token no <span className='token'>{token}</span> is in the maze..</p>
+              <button className='button' onClick={submit}>ADd next</button>
+        </div>
+        
+        
+      </div>
+    )
+  }
 
 
 }

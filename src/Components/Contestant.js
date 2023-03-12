@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { db } from '../firebase'
-import {  onValue, ref ,set } from 'firebase/database'
-import { useLocation, useParams } from 'react-router-dom'
+import {  onValue, ref  } from 'firebase/database'
+import {  useParams } from 'react-router-dom'
+import { Audio } from 'react-loader-spinner'
 
 function Contestant() {
 
   const [token, setToken] = useState()
+  const [isLoading, setIsLoading] = useState(true)
   const params = useParams()
   console.log(params.id)
   
@@ -16,12 +18,13 @@ function Contestant() {
     return onValue(query, (snapshot) => {
       const data = snapshot.val();
       setToken(data.token)
+      setIsLoading(false)
 
 
       
 
       Notification.requestPermission().then((perm)=>{
-        if(perm=="granted"){
+        if(perm==="granted"){
             if (params.id-data.token<5){
               const audio = new Audio('src/utils/Notification - Notification.mp3');
               audio.play();
@@ -29,6 +32,7 @@ function Contestant() {
                 body: 'hurry up',
                 
               })
+              notification.title('maze')
             }
         }else{
 
@@ -38,14 +42,31 @@ function Contestant() {
    
   
   },[])
-  return (
-    <div className='h-100 d-flex justify-content-start align-items-center' style={{flexDirection:'column'}}>
-      <h2 className='text-center pt-3'>Mazerunner</h2>
-    <div className='contestant h-100 d-flex justify-content-center align-items-center'>
-      <p className='text pb-0 m-0'>Token no <span className='token'>{token}</span> is in the maze..</p>
-    </div>
-    </div>
-  )
+
+  if (isLoading){
+    return (
+      <div style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
+          <Audio
+          height="80"
+          width="80"
+          radius="9"
+          color="#CBE4DE"
+          ariaLabel="loading"
+          wrapperStyle
+          wrapperClass
+        />
+      </div>
+    )
+  }else{
+    return (
+      <div className='h-100 d-flex justify-content-start align-items-center' style={{flexDirection:'column'}}>
+        <h2 className='text-center pt-3'>Mazerunner</h2>
+      <div className='contestant h-100 d-flex justify-content-center align-items-center'>
+        <p className='text pb-0 m-0'>Token no <span className='token'>{token}</span> is in the maze..</p>
+      </div>
+      </div>
+    )
+  }
 }
 
 export default Contestant
