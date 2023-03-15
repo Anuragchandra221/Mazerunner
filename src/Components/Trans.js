@@ -4,12 +4,12 @@ import {  onValue, ref ,set } from 'firebase/database'
 import { Audio } from 'react-loader-spinner'
 
 
-function Admin() {
+function Trans() {
   const [token, setToken] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
 useEffect(()=>{
-  const query = ref(db, "maze")
+  const query = ref(db, "trans")
   return onValue(query, (snapshot) => {
     const data = snapshot.val();
     console.log(data)
@@ -21,7 +21,7 @@ useEffect(()=>{
 },[])
 let data
 const getData = ()=>{
-  const query = ref(db, "maze")
+  const query = ref(db, "trans")
   return onValue(query, (snapshot) => {
     data = snapshot.val();
     
@@ -34,7 +34,7 @@ const submit = (e)=>{
   getData();
   console.log(data)
 
-  set(ref(db, 'maze' ),data+1)
+  set(ref(db, 'trans' ),data+1)
 }
   if(isLoading){
     return (
@@ -53,9 +53,9 @@ const submit = (e)=>{
   }else{
     return (
       <div className='admin h-100 d-flex justify-content-start align-items-center' >
-        <h2 className='text-center pt-3'>Mazerunner</h2>
+        <h2 className='text-center pt-3'>Transilvania</h2>
         <div className='h-100 d-flex justify-content-center align-items-center' style={{flexDirection:'column'}}>
-            <p className='text pb-0 m-0 mb-3'>Token no <span className='token'>{token}</span> is in the maze..</p>
+            <p className='text pb-0 m-0 mb-3'>Token no <span className='token'>{token}</span> is in transilvania.</p>
               <button className='button' onClick={submit}>ADd next</button>
         </div>
         
@@ -67,4 +67,4 @@ const submit = (e)=>{
 
 }
 
-export default Admin
+export default Trans

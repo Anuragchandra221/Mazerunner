@@ -9,15 +9,15 @@ function Contestant() {
   const [token, setToken] = useState()
   const [isLoading, setIsLoading] = useState(true)
   const params = useParams()
-  console.log(params.id)
   
 
   useEffect(()=>{
     
-    const query = ref(db, "token")
+    const query = ref(db, "maze")
     return onValue(query, (snapshot) => {
       const data = snapshot.val();
-      setToken(data.token)
+      console.log(parseInt(params.id)-data)
+      setToken(data)
       setIsLoading(false)
 
 
@@ -25,7 +25,8 @@ function Contestant() {
 
       Notification.requestPermission().then((perm)=>{
         if(perm==="granted"){
-            if (params.id-data.token<5){
+            if (parseInt(params.id)-data<5){
+              console.log("hiih")
               const audio = new Audio('src/utils/Notification - Notification.mp3');
               audio.play();
               const notification = new Notification("Mazerunner", {

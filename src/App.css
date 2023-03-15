@@ -17,6 +17,22 @@ body{
   height: 100vh;
   background-color: #2C3333;
 }
+.Gamediv{
+  width: 100%;
+  background-color: #2C3333;
+}
+.underline{
+  border-bottom: 2px solid #fff;
+}
+button{
+  outline: none;
+}
+.btn{
+  width: 50%;
+  font-size: larger;
+  color: #fff;
+  background-color: #2C3333;
+}
 #root{
   height: 100%;
 }
@@ -45,6 +61,9 @@ body{
 }
 .input:focus{
   outline: none;
+}
+.btn:focus{
+  outline:none;
 }
 .button{
   margin: 5px;
@@ -116,6 +135,9 @@ h2{
 @media screen and (min-width:500px) {
   .inputdiv{
     width: 25em;
+  }
+  .Gamediv{
+    width: 40%;
   }
   .text{
     font-size: 32px;
