@@ -16,6 +16,9 @@ html{
 body{
   height: 100vh;
   background-color: #2C3333;
+  background-image: -moz-linear-gradient(120deg,#2C3333, #2E4F4F);
+  background-image: -webkit-linear-gradient(120deg,#2C3333, #2E4F4F);
+  background-image: linear-gradient(120deg,#2C3333, #2E4F4F);
 }
 .Gamediv{
   width: 100%;
@@ -90,6 +93,10 @@ button{
   flex-direction: column;
 }
 .home{
+  width: 100%;
+  flex-direction: column;
+}
+.home1{
   width: 100%;
   flex-direction: column;
 }

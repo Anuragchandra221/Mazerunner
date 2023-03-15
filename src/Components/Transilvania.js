@@ -7,7 +7,7 @@ import {  onValue, ref  } from 'firebase/database'
 import { Audio } from 'react-loader-spinner'
 
 
-function Home() {
+function Transilvania() {
   const [token, setToken] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [trans, setTrans] = useState()
@@ -15,7 +15,8 @@ function Home() {
 
 
   useEffect(()=>{
-    const query = ref(db, "maze")
+    const query = ref(db, "trans")
+    console.log(trans)
     return onValue(query, (snapshot) => {
       const data = snapshot.val();
       console.log(data)
@@ -42,9 +43,9 @@ function Home() {
   }else{
     return (
       <div className='home h-100 d-flex justify-content-start align-items-center' style={{flexDirection:'column'}}>
-        <h2 className='text-center pt-3'>Vyvidh 23 - Mazerunner</h2>
-        <div className='home1 h-100 d-flex justify-content-center align-items-center'>
-            <p className='text pb-0 m-0 mb-4 mt-3'>Token no <span className='token'>{token}</span> is in the maze..</p>
+        <h2 className='text-center pt-3'>Vyvidh 23 - Transylvania</h2>
+        <div className='home h-100 d-flex justify-content-center align-items-center' >
+            <p className='text pb-0 m-0 mb-4 mt-3'>Token no <span className='token'>{token}</span> is in transylvania...</p>
             <div className='inputdiv'>
   
             {/* <input className='input mb-3' placeholder='Enter your token number...' type="text" onChange={(e)=>{setInput(e.target.value)}} />
@@ -57,4 +58,4 @@ function Home() {
   }
 }
 
-export default Home
+export default Transilvania
